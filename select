@@ -1,0 +1,49 @@
+Sub 抽出()
+
+    Dim rowcount As Long
+    Dim bill_no As Long
+    Dim bill_date As Long
+    Dim bill_code As Long
+    Dim bill_customer As String
+    Dim bill_account As String
+    Dim bill_description As String
+    Dim bill_price As Long
+    Dim bill_total As Long
+    '伝票一枚の行数
+    bill_row = 8
+    
+    
+    Application.ScreenUpdating = False
+
+    '一枚目の伝票を抽出
+    For i = 0 To 9
+    rowcount = bill_row * i
+    bill_no = Cells(2 + rowcount, 3).Value
+    bill_date = Cells(3 + rowcount, 3).Value & Cells(3 + rowcount, 5).Value & Cells(3 + rowcount, 7).Value
+    bill_code = Cells(4 + rowcount, 3).Value
+    bill_customer = Cells(4 + rowcount, 7).Value
+    bill_account = Cells(7 + rowcount, 2).Value
+    bill_description = Cells(7 + rowcount, 5).Value
+    bill_price = Cells(7 + rowcount, 13).Value & Cells(7 + rowcount, 14).Value & Cells(7 + rowcount, 15).Value
+    bill_total = Cells(8 + rowcount, 13).Value & Cells(8 + rowcount, 14).Value & Cells(8 + rowcount, 15).Value
+
+    'デバッグ
+     Debug.Print bill_no
+     Debug.Print bill_date
+     Debug.Print bill_code
+     Debug.Print bill_customer
+     Debug.Print bill_account
+     Debug.Print bill_description
+     Debug.Print bill_price
+     Debug.Print bill_total
+     Debug.Print "------------"
+     Debug.Print i + 1 & "回目"
+     Debug.Print "------------"
+
+
+    Next
+        
+    Application.ScreenUpdating = True
+    
+
+End Sub
