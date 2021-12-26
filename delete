@@ -1,0 +1,38 @@
+Sub 空削除()
+Dim i As Long
+    Dim toprow As Long
+    Dim bottomrow As Long
+    Dim count As Long
+    Dim bill_rowCount As Long
+    
+    Application.ScreenUpdating = False
+    
+    '開始する行
+    toprow = 1
+    '終了する行
+    bottomrow = Cells.SpecialCells(xlCellTypeLastCell).Row
+
+   
+    '最下行から順に空行を探す
+    For i = bottomrow To toprow Step -1
+    
+         '空のセルを数える変数
+        count = 0
+        
+        'A列から順に空のセルか調べる
+        For j = 1 To 18
+                If ActiveSheet.Cells(i, j) <> "" Then
+                    Exit For
+                Else
+                    count = count + 1
+                End If
+        Next
+        
+        '削除処理
+        If count = 18 Then
+            Application.Rows(i).Delete
+        End If
+    Next
+    
+    Application.ScreenUpdating = True
+End Sub
