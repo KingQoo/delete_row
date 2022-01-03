@@ -1,0 +1,119 @@
+Private 伝票番号_ As String
+Private 支払先_ As String
+Private 支払コード_ As String
+Private 取引日_ As String
+Private 所属_ As String
+Private 部門_ As String
+Private 勘定科目_ As String
+Private 細科目_ As String
+Private 摘要_ As String
+Private 汎用_ As String
+Private 金額_ As String
+Private 合計_ As String
+
+Public Property Get 伝票番号() As String
+    伝票番号 = 伝票番号_
+End Property
+
+Public Property Let 伝票番号(c As String)
+    伝票番号_ = c
+End Property
+
+Public Property Get 支払先() As String
+    支払先 = 支払先_
+End Property
+
+Public Property Let 支払先(c As String)
+    支払先_ = c
+End Property
+
+Public Property Get 支払コード() As String
+    支払コード = 支払コード_
+End Property
+
+Public Property Let 支払コード(c As String)
+    支払コード_ = c
+End Property
+
+Public Property Get 取引日() As String
+    取引日 = 取引日_
+End Property
+
+Public Property Let 取引日(c As String)
+    取引日_ = c
+End Property
+
+Public Property Get 所属() As String
+    所属 = 所属_
+End Property
+
+Public Property Get 部門() As String
+    部門 = 部門_
+End Property
+
+Public Property Let 部門(c As String)
+    部門_ = c
+End Property
+
+Public Property Let 所属(c As String)
+    所属_ = c
+End Property
+
+Public Property Get 勘定科目() As String
+    勘定科目 = 勘定科目_
+End Property
+
+Public Property Get 細科目() As String
+    細科目 = 細科目_
+End Property
+
+Public Property Let 細科目(c As String)
+    細科目_ = c
+End Property
+
+Public Property Let 勘定科目(c As String)
+    勘定科目_ = c
+End Property
+
+Public Property Get 摘要() As String
+    摘要 = 摘要_
+End Property
+
+Public Property Let 摘要(c As String)
+    摘要_ = c
+End Property
+
+Public Property Get 汎用() As String
+    汎用 = 汎用_
+End Property
+
+Public Property Let 汎用(c As String)
+    汎用_ = c
+End Property
+
+Public Property Get 金額() As String
+    金額 = 金額_
+End Property
+
+Public Property Let 金額(c As String)
+    金額_ = c
+End Property
+
+Public Property Get 合計() As String
+    合計 = 合計_
+End Property
+
+Public Property Let 合計(c As String)
+    合計_ = c
+End Property
+
+
+Public Property Get self() As 支払伝票
+    Set self = Me
+End Property
+
+
+
+
+
+
