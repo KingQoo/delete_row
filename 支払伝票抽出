@@ -1,0 +1,85 @@
+Option Explicit
+
+Enum 列
+        伝票番号 = 1
+        取引日
+        支払コード
+        支払先
+        勘定科目
+        摘要
+        金額
+        合計
+    End Enum
+
+
+Sub 支払伝票()
+
+    Dim 抽出元シート As String
+    抽出元シート = "出金伝票"
+    
+    Dim 抽出先シート As String
+    抽出先シート = "Sheet1"
+    
+    Dim 抽出先セル行 As Long
+    抽出先セル行 = 2
+    
+    Dim 一枚の行数 As Long
+    一枚の行数 = 8
+    
+    Dim 最終行 As Long
+    最終行 = 80
+
+    Dim 伝票枚数 As Long
+    伝票枚数 = 最終行 / 一枚の行数
+
+    Dim 伝票リスト As New Collection
+    Dim i As Long
+    Dim rowcount As Long
+    
+    
+    Worksheets(抽出元シート).Activate
+        
+    '一枚目の伝票を抽出
+    For i = 0 To 伝票枚数
+    rowcount = 一枚の行数 * i
+    
+    With New 支払伝票
+        .伝票番号 = Cells(2 + rowcount, 3).Value
+        .取引日 = Cells(3 + rowcount, 3).Value & Cells(3 + rowcount, 5).Value & Cells(3 + rowcount, 7).Value
+        .支払コード = Cells(4 + rowcount, 3).Value
+        .支払先 = Cells(4 + rowcount, 7).Value
+        .勘定科目 = Cells(7 + rowcount, 2).Value
+        .摘要 = Cells(7 + rowcount, 5).Value
+        .金額 = Cells(7 + rowcount, 13).Value & Cells(7 + rowcount, 14).Value & Cells(7 + rowcount, 15).Value
+        .合計 = Cells(8 + rowcount, 13).Value & Cells(8 + rowcount, 14).Value & Cells(8 + rowcount, 15).Value
+    
+        伝票リスト.Add .self
+    
+    End With
+    Next
+   
+   
+    Worksheets(抽出先シート).Activate
+     
+   Dim b As 支払伝票
+   
+    
+   For Each b In 伝票リスト
+    Debug.Print b.伝票番号 & vbCrLf & b.取引日 & vbCrLf & b.支払コード & vbCrLf _
+    & b.支払先 & vbCrLf & b.勘定科目 & vbCrLf & b.摘要 & vbCrLf _
+    & b.金額 & vbCrLf & b.合計
+    
+    
+    Cells(抽出先セル行, 列.伝票番号) = b.伝票番号
+    Cells(抽出先セル行, 列.取引日) = b.取引日
+    Cells(抽出先セル行, 列.支払コード) = b.支払コード
+    Cells(抽出先セル行, 列.支払先) = b.支払先
+    Cells(抽出先セル行, 列.勘定科目) = b.勘定科目
+    Cells(抽出先セル行, 列.摘要) = b.摘要
+    Cells(抽出先セル行, 列.金額) = b.金額
+    Cells(抽出先セル行, 列.合計) = b.合計
+    
+    抽出先セル行 = 抽出先セル行 + 1
+   Next
+    
+End Sub
